@@ -1,4 +1,4 @@
-module github.com/Enggawadhesh/pgmodule
+module pgmodule
 
 go 1.24
 
