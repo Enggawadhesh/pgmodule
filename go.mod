@@ -2,8 +2,6 @@ module github.com/Enggawadhesh/pgmodule
 
 go 1.24
 
-toolchain go1.23.8
-
 require (
 	github.com/caddyserver/caddy/v2 v2.10.0
 	github.com/jackc/pgx/v4 v4.18.3
