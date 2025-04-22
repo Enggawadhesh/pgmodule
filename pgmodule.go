@@ -20,7 +20,7 @@ type PgModule struct {
 func (PgModule) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
 		ID:  "http.handlers.pgmodule",
-		New: func() caddy.Module { return new(PgModule) },
+		New: func() caddy.Module { return PgModule{} },
 	}
 }
 
