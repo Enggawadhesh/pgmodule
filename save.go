@@ -13,28 +13,28 @@ import (
 )
 
 func init() {
-	caddy.RegisterModule(Save{})
+	caddy.RegisterModule(Savejsonfile{})
 	httpcaddyfile.RegisterHandlerDirective("savejsonfile", parseCaddyfile)
 }
 
 func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error) {
-	var m Save
+	var m Savejsonfile
 	err := m.UnmarshalCaddyfile(h.Dispenser)
 	return m, err
 }
 
-type Save struct {
+type Savejsonfile struct {
 	FilePath string `json:"file_path,omitempty"`
 }
 
-func (Save) CaddyModule() caddy.ModuleInfo {
+func (Savejsonfile) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
 		ID:  "http.handlers.savejsonfile",
-		New: func() caddy.Module { return new(Save) },
+		New: func() caddy.Module { return new(Savejsonfile) },
 	}
 }
 
-func (s Save) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) error {
+func (s Savejsonfile) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) error {
 	file, err := os.Create(s.FilePath)
 	if err != nil {
 		return fmt.Errorf("failed to create file: %w", err)
@@ -49,7 +49,7 @@ func (s Save) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.H
 	return next.ServeHTTP(w, r)
 }
 
-func (s *Save) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
+func (s *Savejsonfile) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
 		if !d.NextArg() {
 			return d.ArgErr()
@@ -60,7 +60,7 @@ func (s *Save) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 }
 
 var (
-	_ caddy.Module                = (*Save)(nil)
-	_ caddyhttp.MiddlewareHandler = (*Save)(nil)
-	_ caddyfile.Unmarshaler       = (*Save)(nil)
+	_ caddy.Module                = (*Savejsonfile)(nil)
+	_ caddyhttp.MiddlewareHandler = (*Savejsonfile)(nil)
+	_ caddyfile.Unmarshaler       = (*Savejsonfile)(nil)
 )
