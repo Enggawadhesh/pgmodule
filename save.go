@@ -1,4 +1,4 @@
-package caddysave
+package savejsonfile
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	caddy.RegisterModule(Save{})
-	httpcaddyfile.RegisterHandlerDirective("save", parseCaddyfile)
+	httpcaddyfile.RegisterHandlerDirective("savejsonfile", parseCaddyfile)
 }
 
 func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error) {
@@ -29,7 +29,7 @@ type Save struct {
 
 func (Save) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
-		ID:  "http.handlers.save",
+		ID:  "http.handlers.savejsonfile",
 		New: func() caddy.Module { return new(Save) },
 	}
 }
