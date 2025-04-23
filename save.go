@@ -1,4 +1,4 @@
-package savejsonfile
+package caddysave
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ type Save struct {
 
 func (Save) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
-		ID:  "http.handlers.savejsonfile",
+		ID:  "http.handlers.save",
 		New: func() caddy.Module { return new(Save) },
 	}
 }
