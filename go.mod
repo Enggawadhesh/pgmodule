@@ -1,13 +1,8 @@
-module github.com/Enggawadhesh/pgmodule
+module github.com/Enggawadhesh/save-json-file
 
-go 1.24
+go 1.24.2
 
-toolchain go1.24.2
-
-require (
-	github.com/caddyserver/caddy/v2 v2.10.0
-	github.com/jackc/pgx/v4 v4.18.3
-)
+require github.com/caddyserver/caddy/v2 v2.10.0
 
 require (
 	cel.dev/expr v0.19.1 // indirect
@@ -55,6 +50,7 @@ require (
 	github.com/jackc/pgproto3/v2 v2.3.3 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgtype v1.14.0 // indirect
+	github.com/jackc/pgx/v4 v4.18.3 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.10 // indirect
 	github.com/libdns/libdns v1.0.0-beta.1 // indirect
